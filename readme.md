@@ -25,7 +25,7 @@ This code base does not use any API since we are sending event through SocketIO.
 
 ### Locally
 
-In order to test the hello function locally, run the following command:
+In order to test the function locally, run the following command:
 
 - `npm run dev` if you're using NPM
 - `yarn dev` if you're using Yarn
