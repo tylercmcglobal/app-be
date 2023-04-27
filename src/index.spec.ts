@@ -14,7 +14,6 @@ describe("my awesome project", () => {
       serverSocket = socket;
     });
     const port = (<AddressInfo>httpServer.address()).port;
-    console.log(port, "port")
     clientSocket = Client(`http://localhost:${port}`);
     clientSocketSecond = Client(`http://localhost:${port}`);
     clientSocket.on("connect", done);
