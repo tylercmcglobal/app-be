@@ -18,7 +18,7 @@ Depending on your preferred package manager, follow the instructions below to de
 
 ## Test your service
 
-This code base does not use any API since we are sending event through SocketIO. Please refer to this: 
+This code base does not use any API since we are sending event through SocketIO. Please refer to this:
 
 - http://18.136.210.152:4173/client: for two buttons code frontend
 - http://18.136.210.152:4173/dashboard: to see the changes made by the client
@@ -30,7 +30,6 @@ In order to test the function locally, run the following command:
 - `npm run dev` if you're using NPM
 - `yarn dev` if you're using Yarn
 
-
 ## Template features
 
 ### Project structure
@@ -41,8 +40,7 @@ The project code base is mainly located within the `src` folder. This folder is 
 
 #### Back-end:
 
-
-.
+```
 ├── dist
 │   ├── index.js
 ├── src
@@ -50,20 +48,7 @@ The project code base is mainly located within the `src` folder. This folder is 
 ├── package.json
 ├── tsconfig.json               # Typescript compiler configuration
 ├── tsconfig.paths.json         # Typescript paths
-
-
-#### Front-end:
-
-
-.
-├── dist
-├── src
-├── assets
-├── context
-├── pages
-├── App.tsx
-├── index.tsx
-
+```
 
 ### 3rd party libraries
 

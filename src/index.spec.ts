@@ -1,22 +1,22 @@
-import { io as Client, Socket as cSocket } from "socket.io-client";
-import { Server, Socket } from "socket.io";
-import { AddressInfo } from "net";
+import { io as Client, Socket as cSocket } from 'socket.io-client';
+import { Socket } from 'socket.io';
+import { AddressInfo } from 'net';
 import request from 'supertest';
-import { app, server as httpServer, io } from ".";
+import { app, server as httpServer, io } from '.';
 
-describe("my awesome project", () => {
-  let serverSocket: Socket; 
+describe('my awesome project', () => {
+  let serverSocket: Socket;
   let clientSocket: cSocket;
-  let clientSocketSecond: cSocket ;
+  let clientSocketSecond: cSocket;
 
   beforeAll((done) => {
-    io.on("connection", (socket) => {
+    io.on('connection', (socket) => {
       serverSocket = socket;
     });
     const port = (<AddressInfo>httpServer.address()).port;
     clientSocket = Client(`http://localhost:${port}`);
     clientSocketSecond = Client(`http://localhost:${port}`);
-    clientSocket.on("connect", done);
+    clientSocket.on('connect', done);
   });
 
   afterAll(() => {
@@ -24,9 +24,9 @@ describe("my awesome project", () => {
     clientSocket.close();
   });
 
-  test("/ (GET)", async () => {
-    const res = await request(app).get("/");
-    expect(res.body).toEqual({ message: "Express + TypeScript Server" });
+  test('/ (GET)', async () => {
+    const res = await request(app).get('/');
+    expect(res.body).toEqual({ message: 'Express + TypeScript Server' });
   });
 
   it('should console.log when having a socket connection', () => {
@@ -34,18 +34,18 @@ describe("my awesome project", () => {
 
     io.on('connection', () => {
       expect(logSpy).toHaveBeenCalledWith('Connected socket');
-    })
+    });
   });
 
-  test("should second client receive message after first client emit orange", (done) => {
+  test('should second client receive message after first client emit orange', (done) => {
     clientSocketSecond.on('orange', (data) => {
       expect(data).toEqual(1);
       done();
     });
     clientSocket.emit('orange', 1);
   });
-  
-  test("should second client receive message after first client emit blue", (done) => {
+
+  test('should second client receive message after first client emit blue', (done) => {
     clientSocketSecond.on('blue', (data) => {
       expect(data).toEqual(1);
       done();
